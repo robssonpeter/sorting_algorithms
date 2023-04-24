@@ -1,67 +1,30 @@
-#include "sort.h"
 #include <stdio.h>
+#include "sort.h"
 /*
- * print_list - the function that prints the linked list
- * @list: pointer to a list to be printed
- * Return: void
- * Description: thefunction to print a linked list
- */
-/*
-void print_list(listint_t *list)
-{
-	printf("how is it going");
-	while(list != NULL)
-	{
-		printf("%d", list->n);
-		if(list->next != NULL)
-		{
-			printf(", ");
-		}
-		else
-		{
-			printf("\n");
-		}
-		list = list->next;
-	}
-}*/
-
-/*
- * insertion_sort_list - the function
- * @list: the liste to be sorted
- * Description: the function that sorts a linked list using insertion
+ * selection_sort - the function
+ * @array: the array to be sorted
+ * @size: the size of array
+ * Description: sort using selection algo
  * Return: void
  */
-void insertion_sort_list(listint_t **list)
+void selection_sort(int *array, size_t size)
 {
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
-		return;
+	size_t current_min, x, sub_x;
+	int swap;
 
-	listint_t *current = (*list)->next;
-
-	while (current != NULL)
+	for (x = 0; x < size; x++)
 	{
-		listint_t *insertion_point = current->prev;
-
-		while (insertion_point != NULL && insertion_point->n > current->n)
+		current_min = x;
+		for (sub_x = x + 1; sub_x < size; sub_x++)
 		{
-			/* Swap the two nodes */
-			insertion_point->next = current->next;
-			if (current->next != NULL)
-				current->next->prev = insertion_point;
-
-			current->prev = insertion_point->prev;
-			current->next = insertion_point;
-
-			if (insertion_point->prev != NULL)
-				insertion_point->prev->next = current;
-			insertion_point->prev = current;
-
-			insertion_point = current->prev;
-
-			/* Print the list after each swap */
-			print_list(*list);
+			if (array[sub_x] < array[current_min])
+			{
+				current_min = sub_x;
+			}
 		}
-
-		current = current->next;
+		swap = array[x];
+		print_array(array, size);
+		array[x] = array[current_min];
+		array[current_min] = swap;
 	}
 }
