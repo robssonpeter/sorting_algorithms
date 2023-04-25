@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "sort.h"
 /*
  * selection_sort - the function
@@ -12,7 +11,7 @@ void selection_sort(int *array, size_t size)
 	size_t current_min, x, sub_x;
 	int swap;
 
-	for (x = 0; x < size; x++)
+	for (x = 0; x < size && size > 2; x++)
 	{
 		current_min = x;
 		for (sub_x = x + 1; sub_x < size; sub_x++)
