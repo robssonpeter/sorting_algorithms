@@ -23,7 +23,8 @@ void selection_sort(int *array, size_t size)
 			}
 		}
 		swap = array[x];
-		print_array(array, size);
+		if (x > 0)
+			print_array(array, size);
 		array[x] = array[current_min];
 		array[current_min] = swap;
 	}
