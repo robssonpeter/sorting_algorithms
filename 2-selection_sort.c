@@ -11,6 +11,8 @@ void selection_sort(int *array, size_t size)
 	int sorted_index, minimum_index, i;
 	int swap_value, swapped;
 
+	if (array == NULL || size < 2)
+		return;
 
 	sorted_index = -1;
 
